@@ -94,7 +94,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹",
     phone: "+91 90000 10101",
     whatsappDigits: "919000010101",
-    imageSlot: "providerClinic",
+    imageSlot: "providerCatClinic",
     hours: SPLIT_CLINIC_HOURS,
   },
   {
@@ -116,7 +116,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹₹",
     phone: "+91 90000 10102",
     whatsappDigits: "919000010102",
-    imageSlot: "providerHospital",
+    imageSlot: "providerVetStethoscope",
     hours: ALWAYS_OPEN_HOURS,
   },
   {
@@ -138,7 +138,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹",
     phone: "+91 90000 10103",
     whatsappDigits: "919000010103",
-    imageSlot: "providerAmbulance",
+    imageSlot: "providerIndiePup",
     hours: ALWAYS_OPEN_HOURS,
   },
   {
@@ -160,7 +160,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹₹",
     phone: "+91 90000 10104",
     whatsappDigits: "919000010104",
-    imageSlot: "providerClinic",
+    imageSlot: "providerRabbit",
     hours: {
       ...SPLIT_CLINIC_HOURS,
       0: null,
@@ -185,7 +185,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹",
     phone: "+91 90000 10105",
     whatsappDigits: "919000010105",
-    imageSlot: "providerDiagnostics",
+    imageSlot: "providerDiagnosticsRoom",
     hours: LAB_HOURS,
   },
   {
@@ -207,7 +207,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹",
     phone: "+91 90000 10106",
     whatsappDigits: "919000010106",
-    imageSlot: "providerBoarding",
+    imageSlot: "providerDaycareYard",
     hours: FULL_DAY_HOURS,
   },
   {
@@ -229,7 +229,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹",
     phone: "+91 90000 10107",
     whatsappDigits: "919000010107",
-    imageSlot: "providerNgo",
+    imageSlot: "providerRescueDog",
     hours: NGO_HOURS,
   },
   {
@@ -251,7 +251,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹₹",
     phone: "+91 90000 10108",
     whatsappDigits: "919000010108",
-    imageSlot: "providerHospital",
+    imageSlot: "providerClinicInterior",
     hours: ALWAYS_OPEN_HOURS,
   },
   {
@@ -273,7 +273,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹",
     phone: "+91 90000 10109",
     whatsappDigits: "919000010109",
-    imageSlot: "providerClinic",
+    imageSlot: "providerCatClinic",
     hours: SPLIT_CLINIC_HOURS,
   },
   {
@@ -295,7 +295,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹",
     phone: "+91 90000 10110",
     whatsappDigits: "919000010110",
-    imageSlot: "providerDiagnostics",
+    imageSlot: "providerVetStethoscope",
     hours: LAB_HOURS,
   },
   {
@@ -317,7 +317,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹₹",
     phone: "+91 90000 10111",
     whatsappDigits: "919000010111",
-    imageSlot: "providerBoarding",
+    imageSlot: "providerDaycareGarden",
     hours: FULL_DAY_HOURS,
   },
   {
@@ -339,7 +339,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹",
     phone: "+91 90000 10112",
     whatsappDigits: "919000010112",
-    imageSlot: "providerClinic",
+    imageSlot: "providerVetHands",
     hours: SPLIT_CLINIC_HOURS,
   },
   {
@@ -361,7 +361,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹₹",
     phone: "+91 90000 10113",
     whatsappDigits: "919000010113",
-    imageSlot: "providerHospital",
+    imageSlot: "providerBoardingKennel",
     hours: FULL_DAY_HOURS,
   },
   {
@@ -383,7 +383,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹",
     phone: "+91 90000 10114",
     whatsappDigits: "919000010114",
-    imageSlot: "providerAmbulance",
+    imageSlot: "providerVetHands",
     hours: ALWAYS_OPEN_HOURS,
   },
   {
@@ -405,7 +405,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹",
     phone: "+91 90000 10115",
     whatsappDigits: "919000010115",
-    imageSlot: "providerNgo",
+    imageSlot: "providerParrot",
     hours: NGO_HOURS,
   },
   {
@@ -427,7 +427,7 @@ export const SAMPLE_PROVIDERS: Provider[] = [
     priceBand: "₹₹",
     phone: "+91 90000 10116",
     whatsappDigits: "919000010116",
-    imageSlot: "providerClinic",
+    imageSlot: "providerClinicInterior",
     hours: {
       ...SPLIT_CLINIC_HOURS,
       1: [{ open: "16:30", close: "21:30" }],

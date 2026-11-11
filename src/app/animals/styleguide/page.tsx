@@ -147,13 +147,12 @@ export default function StyleguidePage() {
             <ImageSlot
               aspectRatio="4/3"
               slotId="heroPrimary"
-              alt="Placeholder arch image slot in forest and sand tones"
+              sizes="(max-width: 1024px) 50vw, 25vw"
             />
             <ImageSlot
               aspectRatio="4/3"
-              slotId="heroSecondaryTop"
               tone="sand-forest"
-              alt="Placeholder arch image slot in inverted sand and forest tones"
+              alt="Duotone arch placeholder fallback in sand and forest tones"
             />
           </div>
         </section>

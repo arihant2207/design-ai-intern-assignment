@@ -83,7 +83,11 @@ export function ProviderCard({
         <ImageSlot
           aspectRatio="16/10"
           slotId={provider.imageSlot}
-          alt={`${provider.name} in ${provider.locality}`}
+          sizes={
+            isCompact
+              ? "(max-width: 640px) 292px, 336px"
+              : "(max-width: 1024px) 100vw, 40vw"
+          }
           tone={
             provider.serviceType === "animal-hospital"
               ? "sand-forest"
@@ -207,14 +211,14 @@ export function ProviderCard({
       <div className="mt-4 pt-3.5 border-t border-line space-y-2.5">
         <div
           className={clsx(
-            "grid gap-2",
-            isCompact ? "grid-cols-2" : "grid-cols-3"
+            "grid gap-1.5 sm:gap-2",
+            isCompact ? "grid-cols-2" : "grid-cols-2 min-[350px]:grid-cols-3"
           )}
         >
           <a
             href={telHref}
             aria-label={`Call ${provider.name} at ${provider.phone}`}
-            className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-md border border-line-strong bg-paper px-2.5 text-xs font-medium text-forest hover:bg-sand transition-colors"
+            className="inline-flex min-h-[40px] items-center justify-center gap-1 sm:gap-1.5 rounded-md border border-line-strong bg-paper px-2 sm:px-2.5 text-xs font-medium text-forest hover:bg-sand transition-colors"
           >
             <Phone className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
             <span>Call</span>
@@ -225,7 +229,7 @@ export function ProviderCard({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Message ${provider.name} on WhatsApp`}
-            className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-md border border-line-strong bg-paper px-2.5 text-xs font-medium text-forest hover:bg-sand transition-colors"
+            className="inline-flex min-h-[40px] items-center justify-center gap-1 sm:gap-1.5 rounded-md border border-line-strong bg-paper px-2 sm:px-2.5 text-xs font-medium text-forest hover:bg-sand transition-colors"
           >
             <MessageCircle className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
             <span>WhatsApp</span>
@@ -238,7 +242,7 @@ export function ProviderCard({
                 onClick={() => onDirections(provider)}
                 aria-label={`Show ${provider.name} on the map`}
                 className={clsx(
-                  "inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors cursor-pointer",
+                  "col-span-2 min-[350px]:col-span-1 inline-flex min-h-[40px] items-center justify-center gap-1 sm:gap-1.5 rounded-md border px-2 sm:px-2.5 text-xs font-medium transition-colors cursor-pointer",
                   isHighlighted
                     ? "border-terracotta bg-terracotta text-white"
                     : "border-line-strong bg-sand/60 text-forest hover:bg-forest hover:text-paper hover:border-forest"
@@ -251,7 +255,7 @@ export function ProviderCard({
               <Link
                 href={`/animals/search?focus=${provider.id}`}
                 aria-label={`Show ${provider.name} on the search map`}
-                className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-md border border-line-strong bg-sand/60 px-2.5 text-xs font-medium text-forest hover:bg-forest hover:text-paper hover:border-forest transition-colors"
+                className="col-span-2 min-[350px]:col-span-1 inline-flex min-h-[40px] items-center justify-center gap-1 sm:gap-1.5 rounded-md border border-line-strong bg-sand/60 px-2 sm:px-2.5 text-xs font-medium text-forest hover:bg-forest hover:text-paper hover:border-forest transition-colors"
               >
                 <Navigation className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
                 <span>Directions</span>

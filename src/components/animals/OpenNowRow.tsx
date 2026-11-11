@@ -46,9 +46,12 @@ export function OpenNowRow() {
   const scrollByCard = (direction: -1 | 1) => {
     const el = scrollerRef.current;
     if (!el) return;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
     el.scrollBy({
       left: direction * 356,
-      behavior: "smooth",
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     });
   };
 
@@ -102,15 +105,15 @@ export function OpenNowRow() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="relative mt-8"
         >
-          {/* Left & right edge fade */}
+          {/* Left & right edge fade matching bg-sand/35 over bg-paper */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-[#EFE8D8] to-transparent transition-opacity"
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-[#F0E9D9] to-transparent transition-opacity"
             style={{ opacity: canScrollPrev ? 1 : 0 }}
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#EFE8D8] to-transparent transition-opacity"
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#F0E9D9] to-transparent transition-opacity"
             style={{ opacity: canScrollNext ? 1 : 0 }}
           />
 

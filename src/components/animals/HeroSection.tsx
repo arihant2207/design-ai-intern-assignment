@@ -227,20 +227,23 @@ export function HeroSection() {
               <ImageSlot
                 aspectRatio="3/4"
                 slotId="heroPrimary"
-                alt="Veterinarian examining a calm Indian pariah dog inside a sunlit clinic room"
+                priority
+                sizes="(max-width: 1024px) 58vw, 25vw"
               />
             </div>
             <div className="col-span-5 space-y-3.5 sm:space-y-4 pb-4">
               <ImageSlot
                 aspectRatio="4/3"
                 slotId="heroSecondaryTop"
+                priority
+                sizes="(max-width: 1024px) 38vw, 18vw"
                 tone="sand-forest"
-                alt="Cat resting comfortably on a linen examination table with a clinician"
               />
               <ImageSlot
                 aspectRatio="1/1"
                 slotId="heroSecondaryBottom"
-                alt="Clean veterinary diagnostics workstation with microscope and sample trays"
+                priority
+                sizes="(max-width: 1024px) 38vw, 18vw"
               />
             </div>
           </motion.div>

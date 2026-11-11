@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { clsx } from "clsx";
 import { IMAGE_SLOTS, type ImageSlotId } from "@/lib/images";
@@ -17,70 +18,67 @@ const aspectClasses: Record<ImageAspectRatio, string> = {
   "3/2": "aspect-[3/2]",
 };
 
-const toneStyles: Record<
-  ImageTone,
-  { bg: string; stroke: string; captionBg: string; captionText: string }
-> = {
+const toneStyles: Record<ImageTone, { bg: string; stroke: string }> = {
   "forest-sand": {
     bg: "bg-sand",
     stroke: "#1F3A2E",
-    captionBg: "bg-paper/95",
-    captionText: "text-forest",
   },
   "sand-forest": {
     bg: "bg-forest",
     stroke: "#E8DFCB",
-    captionBg: "bg-forest-deep/95",
-    captionText: "text-paper",
   },
   "deep-sand": {
     bg: "bg-forest-deep",
     stroke: "#E8DFCB",
-    captionBg: "bg-forest/95",
-    captionText: "text-paper",
   },
 };
 
 export interface ImageSlotProps {
   aspectRatio: ImageAspectRatio;
-  alt: string;
+  alt?: string;
   src?: string;
   slotId?: ImageSlotId;
+  objectPosition?: string;
+  priority?: boolean;
+  sizes?: string;
   tone?: ImageTone;
-  caption?: string;
   className?: string;
 }
 
 /**
  * Editorial arch-cropped image slot.
- * Renders a real Next/Image inside the arch mask when `src` or a matching file
- * under /public/images is present; otherwise renders a clean duotone placeholder
- * with no invented caption.
+ * Renders a Next/Image inside the arch mask when a valid image path is available,
+ * and falls back cleanly to the duotone arch placeholder if missing or errored.
  */
 export function ImageSlot({
   aspectRatio,
   alt,
   src,
   slotId,
+  objectPosition,
+  priority = false,
+  sizes = "(max-width: 768px) 100vw, 33vw",
   tone = "forest-sand",
-  caption,
   className,
 }: ImageSlotProps) {
   const slotMeta = slotId ? IMAGE_SLOTS[slotId] : undefined;
   const diskSrc = useResolvedImageSrc(slotId);
-  const resolvedSrc = src ?? diskSrc;
+  const candidateSrc = src ?? diskSrc;
+
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const resolvedSrc =
+    candidateSrc && candidateSrc !== failedSrc ? candidateSrc : undefined;
+
   const resolvedAlt = alt || slotMeta?.alt || "Animal care photograph";
-  const resolvedCaption =
-    resolvedSrc
-      ? caption ?? (slotMeta && "caption" in slotMeta ? slotMeta.caption : undefined)
-      : undefined;
+  const resolvedPosition =
+    objectPosition ?? slotMeta?.objectPosition ?? "50% 50%";
   const style = toneStyles[tone];
 
   return (
     <div
       role={resolvedSrc ? undefined : "img"}
       aria-label={resolvedSrc ? undefined : resolvedAlt}
-      data-image-path={slotMeta?.path}
+      data-image-path={slotMeta?.src}
       className={clsx(
         "relative overflow-hidden rounded-t-[999px] rounded-b-lg border border-line select-none",
         aspectClasses[aspectRatio],
@@ -93,7 +91,10 @@ export function ImageSlot({
           src={resolvedSrc}
           alt={resolvedAlt}
           fill
-          sizes="(max-width: 768px) 100vw, 40vw"
+          priority={priority}
+          sizes={sizes}
+          style={{ objectPosition: resolvedPosition }}
+          onError={() => setFailedSrc(resolvedSrc)}
           className="object-cover"
         />
       ) : (
@@ -137,18 +138,6 @@ export function ImageSlot({
           />
         </svg>
       )}
-
-      {resolvedCaption ? (
-        <span
-          className={clsx(
-            "absolute bottom-3 left-3 inline-flex items-center rounded border border-line px-2.5 py-1 text-xs font-medium",
-            style.captionBg,
-            style.captionText
-          )}
-        >
-          {resolvedCaption}
-        </span>
-      ) : null}
     </div>
   );
 }

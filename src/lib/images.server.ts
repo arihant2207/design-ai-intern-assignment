@@ -6,20 +6,19 @@ export type ResolvedImageMap = Partial<Record<ImageSlotId, string>>;
 
 /**
  * Checks /public/images on the server so <ImageSlot> renders real photos
- * automatically when files exist on disk, without firing 404s for missing assets.
+ * when present on disk and falls back cleanly to the duotone placeholder if missing.
  */
 export function getResolvedImageMap(): ResolvedImageMap {
   const resolved: ResolvedImageMap = {};
   const publicDir = path.join(process.cwd(), "public");
 
   (Object.keys(IMAGE_SLOTS) as ImageSlotId[]).forEach((slotId) => {
-    const relativePath = IMAGE_SLOTS[slotId].path.replace(/^\/+/, "");
+    const relativePath = IMAGE_SLOTS[slotId].src.replace(/^\/+/, "");
     const diskPath = path.join(publicDir, relativePath);
     if (fs.existsSync(diskPath)) {
-      resolved[slotId] = IMAGE_SLOTS[slotId].path;
+      resolved[slotId] = IMAGE_SLOTS[slotId].src;
     }
   });
 
   return resolved;
 }
-

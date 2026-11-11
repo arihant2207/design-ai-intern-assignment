@@ -43,8 +43,8 @@ export function TrustSection() {
             <ImageSlot
               aspectRatio="4/3"
               slotId="trustClinic"
+              sizes="(max-width: 1024px) 100vw, 40vw"
               tone="sand-forest"
-              alt="Printed clinic registration certificate and appointment ledger on a wooden desk"
             />
           </motion.div>
 

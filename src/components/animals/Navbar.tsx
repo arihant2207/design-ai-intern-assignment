@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
@@ -32,6 +32,7 @@ export function Navbar() {
   const { language, setLanguage } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -47,6 +48,9 @@ export function Navbar() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMobileOpen(false);
+        requestAnimationFrame(() => {
+          menuButtonRef.current?.focus();
+        });
       }
     };
     document.addEventListener("keydown", onKeyDown);
@@ -158,6 +162,7 @@ export function Navbar() {
 
           {/* Mobile Hamburger Trigger */}
           <button
+            ref={menuButtonRef}
             type="button"
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav-drawer"

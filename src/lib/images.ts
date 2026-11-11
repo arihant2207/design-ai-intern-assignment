@@ -1,59 +1,131 @@
 /**
- * Centralized image slot configuration.
- * Drop licensed photographs under /public/images/ matching the paths below.
- * Server-side resolution in src/lib/images.server.ts automatically activates any
- * file present on disk without causing 404s for missing slots.
+ * Single manifest for all animal-care photography under /public/images.
+ * Each entry defines src, descriptive alt text from visual inspection,
+ * and objectPosition to keep the subject centred inside the arch crop.
  */
 export interface ImageSlotConfig {
-  path: string;
+  src: string;
   alt: string;
-  caption?: string;
+  objectPosition: string;
 }
 
 export const IMAGE_SLOTS = {
+  // Hero slots (above the fold, priority loaded)
   heroPrimary: {
-    path: "/images/hero-clinic-consultation.jpg",
-    alt: "Veterinarian examining a calm Indian pariah dog inside a sunlit clinic room",
-    caption: "Routine & preventive care",
+    src: "/images/hero-cat.jpg",
+    alt: "Close-up portrait of an orange tabby cat looking attentively upward",
+    objectPosition: "50% 35%",
   },
   heroSecondaryTop: {
-    path: "/images/hero-cat-checkup.jpg",
-    alt: "Cat resting comfortably on a linen examination table with a clinician",
-    caption: "Feline-friendly handling",
+    src: "/images/hero-dog-checkup.jpg",
+    alt: "Veterinarian in a white lab coat gently examining a small brown dog on an exam mat",
+    objectPosition: "52% 28%",
   },
   heroSecondaryBottom: {
-    path: "/images/hero-diagnostics.jpg",
-    alt: "Clean veterinary diagnostics workstation with microscope and sample trays",
-    caption: "In-house diagnostics",
+    src: "/images/hero-dog.jpg",
+    alt: "Portrait of a smiling golden retriever against a deep slate-blue backdrop",
+    objectPosition: "50% 32%",
   },
+
+  // Services bento slots (6 distinct photos)
+  serviceClinic: {
+    src: "/images/vet-stethoscope.webp",
+    alt: "Veterinarian in blue gloves listening to a yellow Labrador puppy's heartbeat with a stethoscope",
+    objectPosition: "48% 35%",
+  },
+  serviceHospital: {
+    src: "/images/clinic-interior.jpg",
+    alt: "Bright veterinary hospital reception area with a wooden slatted desk and indoor plants",
+    objectPosition: "50% 48%",
+  },
+  serviceDiagnostics: {
+    src: "/images/clinic-room.webp",
+    alt: "Veterinary examination and ultrasound room with stainless steel table and imaging cart",
+    objectPosition: "56% 52%",
+  },
+  serviceBoarding: {
+    src: "/images/boarding.jpg",
+    alt: "Two caretakers seated on the floor with small dogs in front of numbered indoor boarding kennels",
+    objectPosition: "50% 50%",
+  },
+  serviceAmbulance: {
+    src: "/images/vet-hands.jpg",
+    alt: "Clinician in teal scrubs steadying a cream puppy while wearing a stethoscope",
+    objectPosition: "52% 38%",
+  },
+  serviceNgo: {
+    src: "/images/rescue-street-dog.jpg",
+    alt: "Portrait of a calm tan Indian pariah dog outdoors",
+    objectPosition: "50% 35%",
+  },
+
+  // Trust section
   trustClinic: {
-    path: "/images/trust-verification.jpg",
-    alt: "Printed clinic registration certificate and appointment ledger on a wooden desk",
-    caption: "Verification ledger",
+    src: "/images/trust-records.jpg",
+    alt: "Veterinary clinician in scrubs holding a pen and reviewing notes on a black clipboard",
+    objectPosition: "52% 35%",
   },
-  providerClinic: {
-    path: "/images/providers/clinic-default.jpg",
-    alt: "Reception and consultation area of a neighbourhood veterinary clinic",
+
+  // Provider cards (varied so adjacent cards do not repeat photos)
+  providerCatClinic: {
+    src: "/images/cat-2.jpg",
+    alt: "Brown tabby cat sitting calmly against a warm cream backdrop",
+    objectPosition: "50% 52%",
   },
-  providerHospital: {
-    path: "/images/providers/hospital-default.jpg",
-    alt: "Surgical and inpatient monitoring bay inside an animal hospital",
+  providerVetStethoscope: {
+    src: "/images/vet-stethoscope.webp",
+    alt: "Veterinarian examining a yellow Labrador puppy on a clinic table",
+    objectPosition: "48% 35%",
   },
-  providerBoarding: {
-    path: "/images/providers/boarding-default.jpg",
-    alt: "Shaded outdoor courtyard and clean indoor kennels at an animal boarding centre",
+  providerVetHands: {
+    src: "/images/vet-hands.jpg",
+    alt: "Veterinary clinician gently comforting a cream-coated puppy",
+    objectPosition: "52% 38%",
   },
-  providerDiagnostics: {
-    path: "/images/providers/diagnostics-default.jpg",
-    alt: "Veterinary diagnostic lab counter with imaging and haematology equipment",
+  providerClinicInterior: {
+    src: "/images/clinic-interior.jpg",
+    alt: "Clean veterinary clinic reception and waiting lounge",
+    objectPosition: "50% 48%",
   },
-  providerAmbulance: {
-    path: "/images/providers/ambulance-default.jpg",
-    alt: "Prepared animal rescue ambulance equipped with stretcher and oxygen support",
+  providerDiagnosticsRoom: {
+    src: "/images/clinic-room.webp",
+    alt: "Veterinary diagnostics and ultrasound examination room",
+    objectPosition: "56% 52%",
   },
-  providerNgo: {
-    path: "/images/providers/ngo-default.jpg",
-    alt: "Volunteers caring for rescued dogs and birds at a local animal welfare shelter",
+  providerBoardingKennel: {
+    src: "/images/boarding.jpg",
+    alt: "Staff caring for dogs inside an indoor pet boarding room",
+    objectPosition: "50% 50%",
+  },
+  providerDaycareYard: {
+    src: "/images/daycare-playing.jpg",
+    alt: "Group of dogs resting together in a fenced outdoor turf daycare yard",
+    objectPosition: "48% 45%",
+  },
+  providerDaycareGarden: {
+    src: "/images/daycare-garden.jpg",
+    alt: "Two golden dogs playing together on a sunlit green lawn",
+    objectPosition: "50% 58%",
+  },
+  providerIndiePup: {
+    src: "/images/indie-dog.jpg",
+    alt: "Young tan-and-white Indian pariah dog sitting on an outdoor path",
+    objectPosition: "55% 32%",
+  },
+  providerRescueDog: {
+    src: "/images/rescue-street-dog.jpg",
+    alt: "Indian street dog looking steadily toward the camera",
+    objectPosition: "50% 35%",
+  },
+  providerRabbit: {
+    src: "/images/rabbit.jpg",
+    alt: "White rabbit with upright pink ears sitting in green grass",
+    objectPosition: "45% 38%",
+  },
+  providerParrot: {
+    src: "/images/parrot.jpg",
+    alt: "Blue-and-gold macaw parrot perched in profile against a warm timber backdrop",
+    objectPosition: "52% 52%",
   },
 } as const satisfies Record<string, ImageSlotConfig>;
 
